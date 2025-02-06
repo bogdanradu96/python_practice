@@ -8,20 +8,39 @@ def add_gym_membership():
     '''
 
     name = input("Enter the name of the membership:")
-    valability = input("Enter the duration of the membership:")
-    price = input("Enter the price:")
-    benefits = input("Enter the benefits - 1 for no benefits, 2 for multiple ones:")
-
+    duration = int(input("Enter the duration of the membership in days:"))
+    price = float(input("Enter the price in $:"))
+    benefits = input("Enter the benefits - 1 for no benefits, 2 for One or more benefits:")
+    membership_offers = {}
     if int(benefits) == 1:
 
         benefits = "No benefits included"
         membership = {
             'name' :name,
-            'valability' :valability,
+            'duration' :duration,
             'price' :price,
             'benefits' :benefits
         }
         print("Membership added!", membership)
+        membership_offers.update(membership)
 
     else:
-        pass
+        benefits = []
+        while True:
+            benefit = input("Enter the benefit:")
+
+            if benefit == "":
+                break
+
+            benefits.append(benefit)
+            print("Inserted benefits:", benefits)
+        
+        membership ={
+            'name': name,
+            'duration': duration,
+            'price': price,
+            'benefits': benefits
+        }
+        print("Membership added!", membership)
+        membership_offers.update(membership)
+    print("Available memberships",membership_offers)
