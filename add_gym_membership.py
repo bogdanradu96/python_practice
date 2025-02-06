@@ -11,7 +11,7 @@ def add_gym_membership():
     duration = int(input("Enter the duration of the membership in days:"))
     price = float(input("Enter the price in $:"))
     benefits = input("Enter the benefits - 1 for no benefits, 2 for One or more benefits:")
-    membership_offers = {}
+    membership_package = {}
     if int(benefits) == 1:
 
         benefits = "No benefits included"
@@ -22,7 +22,7 @@ def add_gym_membership():
             'benefits' :benefits
         }
         print("Membership added!", membership)
-        membership_offers.update(membership)
+        membership_package.update(membership)
 
     else:
         benefits = []
@@ -42,5 +42,5 @@ def add_gym_membership():
             'benefits': benefits
         }
         print("Membership added!", membership)
-        membership_offers.update(membership)
-    print("Available memberships",membership_offers)
+        membership_package.update(membership)
+    print("Available memberships", membership_package)
