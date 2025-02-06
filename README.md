@@ -2,6 +2,8 @@
 
 `City Gym` is a `tool` that allows `all the gyms in the city` to `manage memberships`.
 
+Such as adding new membership packages or checking the availability of someone's membership.
+
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
