@@ -22,7 +22,7 @@ def add_gym_membership():
     price = float(input("Enter the price in $:"))
     benefits = input("Enter the benefits - 1 for no benefits, 2 for One or more benefits:")
     membership_packages = []
-    #Checking if benefits need to be added in the offer
+    #Checking if benefits need to be added in the offer\
     if int(benefits) == 1:
 
         benefits = "No benefits included"
@@ -34,9 +34,6 @@ def add_gym_membership():
         }
         print("Membership added!", membership)
         membership_packages.append(membership)
-        with open('C:/Users/bogda/Desktop/PythonSkillab/citygym/memberships.csv') as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow(membership_packages)
     else:
         benefits = [] #Creates a list for benefits in case more are added
         while True:
@@ -46,7 +43,7 @@ def add_gym_membership():
 
             benefits.append(benefit)
             print("Inserted benefits:", benefits)
-        
+
         membership ={
             'name': name,
             'duration': duration,
@@ -62,3 +59,8 @@ def add_gym_membership():
         add_gym_membership()
 
     print("Available memberships:", membership_packages)
+    with open('C:/Users/bogda/Desktop/PythonSkillab/citygym/memberships.csv', "a", newline="") as csvfile:
+        fieldnames = membership_packages[0].keys()
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(membership_packages)
