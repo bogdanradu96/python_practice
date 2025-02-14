@@ -8,4 +8,4 @@ def view_memberships():
             for row in reader:
                 print(row)
     except IOError as e:
-        print("I/O error occured:", strerror(e.errno))
+        print("I/O error occurred:", strerror(e.errno))
