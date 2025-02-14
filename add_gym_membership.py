@@ -1,5 +1,5 @@
 import csv
-
+import os
 
 def add_gym_membership():
     """
@@ -59,8 +59,11 @@ def add_gym_membership():
         add_gym_membership()
 
     print("Available memberships:", membership_packages)
-    with open('C:/Users/bogda/Desktop/PythonSkillab/citygym/memberships.csv', "a", newline="") as csvfile:
+    file_path = "C:/Users/bogda/Desktop/PythonSkillab/citygym/memberships.csv"
+    with open(file_path, "a", newline="") as csvfile:
+        file_exists = os.path.exists(file_path) and os.path.getsize(file_path) > 0 # Checking if the file exists and is not empty
         fieldnames = membership_packages[0].keys()
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
+        if file_exists is False:
+            writer.writeheader()
         writer.writerows(membership_packages)
