@@ -1,3 +1,6 @@
+import csv
+
+
 def add_gym_membership():
     """
     Requests details to add a new membership package
@@ -31,7 +34,9 @@ def add_gym_membership():
         }
         print("Membership added!", membership)
         membership_packages.append(membership)
-
+        with open('C:/Users/bogda/Desktop/PythonSkillab/citygym/memberships.csv') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(membership_packages)
     else:
         benefits = [] #Creates a list for benefits in case more are added
         while True:
