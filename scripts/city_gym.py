@@ -1,7 +1,7 @@
 import os
 import sys
 
-sys.path.append((os.path.dirname(os.getcwd()))) # Append path to travelagency
+sys.path.append((os.path.dirname(os.getcwd()))) # Append path to citygym
 
 import add_gym_membership as gym
 import membership_check as check

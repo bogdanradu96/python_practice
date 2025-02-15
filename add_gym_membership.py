@@ -1,5 +1,6 @@
 import csv
 import os
+from pathlib import Path
 
 def add_gym_membership():
     """
@@ -59,8 +60,15 @@ def add_gym_membership():
         add_gym_membership()
 
     print("Available memberships:", membership_packages)
-    file_path = "C:/Users/bogda/Desktop/PythonSkillab/citygym/memberships.csv"
     #Saving the membership packages in a csv file
+    #file_path = 'C:/Users/bogda/Desktop/PythonSkillab/citygym/memberships.csv'
+
+    project_root = Path(__file__).resolve().parent.parent #Gets the root directory two levels up from "scripts"
+
+    #Defines the output directory and file path
+    folder_path = project_root / 'citygym'
+    file_path = folder_path / 'memberships.csv'
+
     with open(file_path, "a", newline="") as csvfile:
         file_exists = os.path.exists(file_path) and os.path.getsize(file_path) > 0 # Checking if the file exists and is not empty
         fieldnames = membership_packages[0].keys() #Gets the names of the keys to use for the first row
