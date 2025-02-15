@@ -59,7 +59,8 @@ def add_gym_membership():
     if more == 'Yes':
         add_gym_membership()
 
-    print("Available memberships:", membership_packages)
+    # print("Available memberships:", membership_packages)
+
     #Saving the membership packages in a csv file
     #file_path = 'C:/Users/bogda/Desktop/PythonSkillab/citygym/memberships.csv'
 
@@ -72,7 +73,8 @@ def add_gym_membership():
     with open(file_path, "a", newline="") as csvfile:
         file_exists = os.path.exists(file_path) and os.path.getsize(file_path) > 0 # Checking if the file exists and is not empty
         fieldnames = membership_packages[0].keys() #Gets the names of the keys to use for the first row
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames) #Defining the writer for easier use
         if file_exists is False: #Writes the dictionary keys as headers if the file does not exist
             writer.writeheader()
-        writer.writerows(membership_packages)
+        writer.writerows(membership_packages) #Writing the dictionary content in rows
+    print("Membership(s) saved in memberships.csv")

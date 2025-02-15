@@ -13,5 +13,5 @@ def view_memberships():
             reader = csv.reader(csvfile)
             for row in reader:
                 print(row)
-    except IOError as e:
+    except IOError as e: #Exception in case the file does not exist
         print("I/O error occurred:", strerror(e.errno))

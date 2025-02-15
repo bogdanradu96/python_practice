@@ -1,4 +1,4 @@
 name,duration,price,benefits
-Standard,60,30.0,['Pool']
-Basic,30,20.0,No benefits included
-Premium,60,50.0,"['Spa', 'Pool', 'Drinks']"
+Standard,30,15.0,No benefits included
+Premium,60,30.0,"['Spa', 'Pool']"
+Basic,30,10.0,No benefits included

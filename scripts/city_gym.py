@@ -19,7 +19,9 @@ try:
     if task == "1":
         gym.add_gym_membership()
     elif task == "2":
-        check.membership_check()
+        creation_date = input("Enter the date when the membership was created (YYYY-MM-DD):")
+        duration = int(input("Enter the duration of the membership in days:"))
+        print(check.membership_check(creation_date, duration))
     elif task == "3":
         view.view_memberships()
     else:
