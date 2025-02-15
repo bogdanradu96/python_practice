@@ -10,12 +10,19 @@ import view_memberships as view
 
 if __name__ == "__main__":
 
-        task = input("What would you like to do? 1 - add new membership, 2 - check availability, 3 - view memberships:\n")
-        if task == "1":
-            gym.add_gym_membership()
-        elif task == "2":
-            check.membership_check()
-        elif task == "3":
-            view.view_memberships()
-        else:
-            print("That option is not available")
+    #Create an exception for tasks
+    class TaskException(Exception):
+        pass
+
+try:
+    task = input("What would you like to do? 1 - add new membership, 2 - check availability, 3 - view memberships:\n")
+    if task == "1":
+        gym.add_gym_membership()
+    elif task == "2":
+        check.membership_check()
+    elif task == "3":
+        view.view_memberships()
+    else:
+        raise TaskException #We raise the self-made exception if the input is incorrect
+except TaskException:
+    print("Option not available")
