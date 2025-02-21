@@ -8,7 +8,7 @@ def memberships_file():
 
     project_root = Path(__file__).resolve().parent.parent  # Gets the root directory three levels up from "scripts"
     # Defines the output directory and file path
-    folder_path = project_root / 'citygym'
+    folder_path = project_root / 'data'
     file_path = folder_path / 'memberships.csv'
     return file_path
 
