@@ -1,7 +1,7 @@
 import pytest
 
-from membership_check import membership_check
-from datetime import datetime
+from utils import membership_check
+
 
 @pytest.mark.parametrize(
     "creation_date, duration, test_date, expected_message",

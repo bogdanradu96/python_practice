@@ -3,10 +3,7 @@ import sys
 
 sys.path.append((os.path.dirname(os.getcwd()))) # Append path to citygym
 
-import add_gym_membership as gym
-import membership_check as check
-import view_memberships as view
-
+from utils import add_gym_membership as gym, membership_check as check, view_memberships as view
 
 if __name__ == "__main__":
 

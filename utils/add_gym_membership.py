@@ -67,7 +67,7 @@ def add_gym_membership():
     project_root = Path(__file__).resolve().parent.parent #Gets the root directory two levels up from "scripts"
 
     #Defines the output directory and file path
-    folder_path = project_root / 'citygym'
+    folder_path = project_root / 'data'
     file_path = folder_path / 'memberships.csv'
 
     with open(file_path, "a", newline="") as csvfile:
