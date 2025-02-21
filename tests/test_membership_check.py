@@ -1,6 +1,9 @@
 import pytest
+import sys
+import os
+sys.path.append(os.path.abspath("utils")) #Path to the utils directory
 
-from utils import membership_check
+from membership_check import membership_check
 
 
 @pytest.mark.parametrize(
