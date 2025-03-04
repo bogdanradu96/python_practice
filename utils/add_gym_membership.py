@@ -2,64 +2,57 @@ import csv
 import os
 from pathlib import Path
 
-def add_gym_membership():
+
+class Membership:
     """
-    Requests details to add a new membership package
+    Initializes a Membership object.
 
     Parameters:
     -----------
     name : str
-    duration : int
-    price : float
-    benefits : str
-
-    Examples:
-    ----------
-    add_gym_membership()
+    duration : int (days)
+    price : float ($)
+    benefits : list (optional)
     """
+    def __init__(self, name, duration, price, benefits = None):
+        self.name = name
+        self.duration = duration
+        self.price = price
+        self.benefits = benefits if benefits else ["No benefits included"]
 
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "duration": self.duration,
+            "price": self.price,
+            "benefits": self.benefits
+        }
+
+def add_gym_membership():
+    """
+    Requests details to add a new membership package
+    """
     name = input("Enter the name of the membership:")
     duration = int(input("Enter the duration of the membership in days:"))
     price = float(input("Enter the price in $:"))
-    benefits = input("Enter the benefits - 1 for no benefits, 2 for One or more benefits:")
-    membership_packages = []
-    #Checking if benefits need to be added in the offer\
-    if int(benefits) == 1:
 
-        benefits = "No benefits included"
-        membership = {
-            'name' :name,
-            'duration' :duration,
-            'price' :price,
-            'benefits' :benefits
-        }
-        print("Membership added!", membership)
-        membership_packages.append(membership)
-    else:
-        benefits = [] #Creates a list for benefits in case more are added
+    benefits_option = input("Enter the benefits - 1 for no benefits, 2 for One or more benefits:")
+    benefits = []
+
+    if benefits_option == "2":
         while True:
-            benefit = input("Enter the benefit:")
+            benefit = input(" Enter a benefit(press enter to stop):")
             if benefit == "":
                 break
-
             benefits.append(benefit)
-            print("Inserted benefits:", benefits)
 
-        membership ={
-            'name': name,
-            'duration': duration,
-            'price': price,
-            'benefits': benefits
-        }
-        print("Membership added!", membership)
-        membership_packages.append(membership)
+    membership = Membership(name, duration, price, benefits)
+    print("Membership addded!", membership.to_dict())
 
     #Checking if the user wants to add another offer
     more = input("Would you like to add another membership?")
-    if more == 'Yes':
+    if more.lower() == 'yes':
         add_gym_membership()
-
-    # print("Available memberships:", membership_packages)
 
     #Saving the membership packages in a csv file
     #file_path = 'C:/Users/bogda/Desktop/PythonSkillab/citygym/memberships.csv'
@@ -72,9 +65,11 @@ def add_gym_membership():
 
     with open(file_path, "a", newline="") as csvfile:
         file_exists = os.path.exists(file_path) and os.path.getsize(file_path) > 0 # Checking if the file exists and is not empty
-        fieldnames = membership_packages[0].keys() #Gets the names of the keys to use for the first row
+        fieldnames = ["name", "duration", "price", "benefits"] #A list of what the field names should be
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames) #Defining the writer for easier use
+
         if file_exists is False: #Writes the dictionary keys as headers if the file does not exist
             writer.writeheader()
-        writer.writerows(membership_packages) #Writing the dictionary content in rows
+
+        writer.writerows([membership.to_dict()]) #Writing the dictionary content in rows
     print("Membership(s) saved in memberships.csv")
