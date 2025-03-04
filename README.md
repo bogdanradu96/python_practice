@@ -10,7 +10,7 @@ Before you begin, ensure you have met the following requirements:
 * You have installed the `3.12` version of `Python programming language`
  
 ## Using City Gym
-To use `City`, follow these steps:
+To use `City Gym`, follow these steps:
 
 Change directory to `scripts`:
 ```
