@@ -27,6 +27,8 @@ class Membership:
             "price": self.price,
             "benefits": self.benefits
         }
+    def __str__(self):
+        return str(self.to_dict())
 
 def add_gym_membership():
     """
@@ -47,7 +49,7 @@ def add_gym_membership():
             benefits.append(benefit)
 
     membership = Membership(name, duration, price, benefits)
-    print("Membership addded!", membership.to_dict())
+    print("Membership addded!", membership)
 
     #Checking if the user wants to add another offer
     more = input("Would you like to add another membership?")
