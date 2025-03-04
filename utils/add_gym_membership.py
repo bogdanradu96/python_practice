@@ -70,7 +70,7 @@ def add_gym_membership():
         fieldnames = ["name", "duration", "price", "benefits"] #A list of what the field names should be
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames) #Defining the writer for easier use
 
-        if file_exists is False: #Writes the dictionary keys as headers if the file does not exist
+        if file_exists is False: #Writes the fieldnames as headers if the file does not exist
             writer.writeheader()
 
         writer.writerows([membership.to_dict()]) #Writing the dictionary content in rows
